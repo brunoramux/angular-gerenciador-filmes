@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1765014260993,
+    "name": "João Angular",
+    "email": "joao@teste.com",
+    "password": "123"
+  },
+  {
+    "id": 1766709122110,
+    "name": "Lucas Angular",
+    "email": "lucas@teste.com",
+    "password": "12345678"
+  },
+  {
+    "id": 1766943799555,
+    "name": "Felipe Freitas",
+    "email": "felipe@hotmail.com",
+    "password": "angular123"
+  },
+  {
+    "id": 1766944307151,
+    "name": "sssssssssssss",
+    "email": "sssssssssssss",
+    "password": "sssssssssssssss"
+  },
+  {
+    "id": 1766944487677,
+    "name": "Fulaninho",
+    "email": "fulano@teste.com",
+    "password": "fulano123"
+  },
+  {
+    "id": 1766952936933,
+    "name": "Fulano",
+    "email": "fulano@t.com",
+    "password": "fulano123"
+  },
+  {
+    "id": 1766953157252,
+    "name": "Felipe",
+    "email": "fe@t.com",
+    "password": "felipe098"
+  },
+  {
+    "id": 1766953324622,
+    "name": "Felipe",
+    "email": "fe@te.com",
+    "password": "felipe098"
+  },
+  {
+    "id": 1766953448582,
+    "name": "Felipe",
+    "email": "fe@tee.com",
+    "password": "felipe098"
+  },
+  {
+    "id": 1766953514541,
+    "name": "Felipe",
+    "email": "fe@teee.com",
+    "password": "felipe098"
+  },
+  {
+    "id": 1771020126958,
+    "name": "Bruno Ramos",
+    "email": "bruno.lemos@live.com",
+    "password": "123456"
+  }
+]

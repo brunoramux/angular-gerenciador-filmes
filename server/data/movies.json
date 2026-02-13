@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1765666339447,
+    "titulo": "Matrix 4",
+    "descricao": "O retorno de Neo",
+    "genero": "Sci-Fi",
+    "anoLancamento": 2021,
+    "caminhoImagem": "/uploads/image-1765666339432-345152340.jpg",
+    "qtdVotos": 105,
+    "mediaVotos": 3.3457
+  },
+  {
+    "id": 1765666870211,
+    "titulo": "Interestelar",
+    "descricao": "Exploração espacial",
+    "genero": "Sci-Fi",
+    "anoLancamento": 2014,
+    "caminhoImagem": "/uploads/image-1765666870177-14156342.jpg",
+    "qtdVotos": 188,
+    "mediaVotos": 4.8421
+  }
+]

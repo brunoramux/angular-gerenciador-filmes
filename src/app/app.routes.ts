@@ -8,11 +8,13 @@ import { FavoriteMovies } from './features/favorites/pages/favorite-movies/favor
 import { MovieDetails } from './features/movies/pages/movie-details/movie-details';
 import { CreateMovie } from './features/movies/pages/create-movie/create-movie';
 import { authGuard } from './core/guards/auth-guard';
+import { guestGuard } from './core/guards/guest-guard';
 
 export const routes: Routes = [
   {
     path: 'auth',
     component: AuthenticationScreen,
+    canActivate: [guestGuard],
 
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,5 +34,10 @@ export const routes: Routes = [
       { path: 'details/:id', component: MovieDetails },
       { path: 'create', component: CreateMovie },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: 'auth/login',
+    pathMatch: 'full',
   },
 ];

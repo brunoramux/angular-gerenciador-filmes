@@ -1,4 +1,7 @@
 <!-- Formulário de Login do Usuário -->
+@let email = loginForm.email();
+@let password = loginForm.password();
+
 <div class="space-y-8">
   <div>
     <h1 class="text-2xl font-bold text-white">Acesse sua conta</h1>
@@ -16,6 +19,10 @@
       />
     </div>
 
+    @if (email.touched() && email.invalid()) {
+      <p class="text-sm font-bold text-red-400">{{ loginForm.email().errors()[0].message }}</p>
+    }
+
     <div
       class="flex items-center bg-[#202024] rounded-lg border border-transparent focus-within:border-purple-700 transition px-4 py-3"
     >
@@ -27,6 +34,9 @@
         class="bg-transparent outline-none text-white w-full placeholder-gray-500"
       />
     </div>
+    @if (password.touched() && password.invalid()) {
+      <p class="text-sm font-bold text-red-400">{{ loginForm.password().errors()[0].message }}</p>
+    }
   </div>
 
   <button

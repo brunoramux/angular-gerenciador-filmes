@@ -18,6 +18,6 @@ export class UserTokenStore {
   }
 
   hasToken() {
-    return !!this.getToken;
+    return !!this.getToken();
   }
 }

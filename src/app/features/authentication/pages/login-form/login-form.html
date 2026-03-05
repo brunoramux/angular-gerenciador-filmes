@@ -40,8 +40,16 @@
   </div>
 
   <button
-    class="w-full bg-purple-800 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-200 cursor-pointer"
+    class="w-full bg-purple-800 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:bg-purple-800/50"
+    (click)="login()"
+    [disabled]="isButtonDisabled() || loginResource.isLoading()"
   >
     Entrar
   </button>
+
+  @if (loginError()) {
+    <p class="text-sm font-bold text-red-400">{{ loginError() }}</p>
+  } @else {
+    <p class="text-sm font-bold text-red-400">&nbsp;</p>
+  }
 </div>

@@ -64,5 +64,17 @@
     "name": "Bruno Ramos",
     "email": "bruno.lemos@live.com",
     "password": "12345678"
+  },
+  {
+    "id": 1772756567440,
+    "name": "Bruno",
+    "email": "tecbrunoramos@live.com",
+    "password": "12345678"
+  },
+  {
+    "id": 1772756992158,
+    "name": "Bruno",
+    "email": "bruno@teste.com",
+    "password": "12345678"
   }
 ]

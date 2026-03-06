@@ -1,3 +1,7 @@
+@let email = registerForm.email();
+@let name = registerForm.name();
+@let password = registerForm.password();
+@let confirmPassword = registerForm.confirmPassword();
 <!-- Formulário de Cadastro de Usuário -->
 <div class="space-y-8">
   <div>
@@ -12,8 +16,13 @@
       <input
         placeholder="Nome"
         class="bg-transparent outline-none text-white w-full placeholder-gray-500"
+        [field]="registerForm.name"
       />
     </div>
+
+    @if (name.touched() && name.invalid()) {
+      <p class="text-sm font-bold text-red-400">{{ registerForm.name().errors()[0].message }}</p>
+    }
 
     <div
       class="flex items-center bg-[#202024] rounded-lg border border-transparent focus-within:border-purple-700 transition px-4 py-3"
@@ -22,8 +31,12 @@
       <input
         placeholder="E-mail"
         class="bg-transparent outline-none text-white w-full placeholder-gray-500"
+        [field]="registerForm.email"
       />
     </div>
+    @if (email.touched() && email.invalid()) {
+      <p class="text-sm font-bold text-red-400">{{ registerForm.email().errors()[0].message }}</p>
+    }
 
     <div
       class="flex items-center bg-[#202024] rounded-lg border border-transparent focus-within:border-purple-700 transition px-4 py-3"
@@ -33,13 +46,46 @@
         placeholder="Senha"
         type="password"
         class="bg-transparent outline-none text-white w-full placeholder-gray-500"
+        [field]="registerForm.password"
       />
     </div>
+    @if (password.touched() && password.invalid()) {
+      <p class="text-sm font-bold text-red-400">
+        {{ registerForm.password().errors()[0].message }}
+      </p>
+    }
+
+    <div
+      class="flex items-center bg-[#202024] rounded-lg border border-transparent focus-within:border-purple-700 transition px-4 py-3"
+    >
+      <img src="images/password.svg" class="w-5 h-5 mr-3 opacity-50" />
+      <input
+        placeholder="Confirme a Senha"
+        type="password"
+        class="bg-transparent outline-none text-white w-full placeholder-gray-500"
+        [field]="registerForm.confirmPassword"
+      />
+    </div>
+    @if (confirmPassword.touched() && confirmPassword.invalid()) {
+      <p class="text-sm font-bold text-red-400">
+        {{ registerForm.confirmPassword().errors()[0].message }}
+      </p>
+    }
   </div>
 
   <button
-    class="w-full bg-purple-800 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-200 cursor-pointer"
+    class="w-full bg-purple-800 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-200 disabled:cursor-not-allowed disabled:bg-purple-800/50 cursor-pointer"
+    (click)="register()"
+    [disabled]="isButtonDisabled() || registerResource.isLoading()"
   >
     Criar
   </button>
+
+  @if (registerError()) {
+    <p class="text-sm font-bold text-red-400">{{ registerError() }}</p>
+  } @else if (successMessage()) {
+    <p class="text-sm font-bold text-green-400">{{ successMessage() }}</p>
+  } @else {
+    <p class="text-sm font-bold text-red-400">&nbsp;</p>
+  }
 </div>

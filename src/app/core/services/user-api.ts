@@ -5,6 +5,7 @@ import { IUserLoginSuccessResponse } from '../../shared/models/user-login-succes
 import { tap } from 'rxjs';
 import { UserTokenStore } from './user-token-store';
 import { IUserRegisterSuccessResponse } from '../../shared/models/user-register-success-response';
+import { UserInfo } from './user-info';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,20 @@ import { IUserRegisterSuccessResponse } from '../../shared/models/user-register-
 export class UserApi {
   private readonly _httpClient = inject(HttpClient);
   private readonly _userTokenStore = inject(UserTokenStore);
+  private readonly _userInfo = inject(UserInfo);
 
   validateToken() {
-    return this._httpClient.get<IUserTokenSuccessAuthResponse>(
-      'http://localhost:3000/users/validate-token',
-    );
+    return this._httpClient
+      .get<IUserTokenSuccessAuthResponse>('http://localhost:3000/users/validate-token')
+      .pipe(
+        tap(({ id, name, email }) => {
+          this._userInfo.setUserInfo({
+            id,
+            name,
+            email,
+          });
+        }),
+      );
   }
 
   login(email: string, password: string) {

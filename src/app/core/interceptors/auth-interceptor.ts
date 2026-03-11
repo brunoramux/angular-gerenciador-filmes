@@ -5,7 +5,6 @@ import { UserTokenStore } from '../services/user-token-store';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const userTokenStore = inject(UserTokenStore);
   const HAS_TOKEN = userTokenStore.hasToken();
-  console.log(HAS_TOKEN);
 
   if (HAS_TOKEN) {
     const newRequest = req.clone({

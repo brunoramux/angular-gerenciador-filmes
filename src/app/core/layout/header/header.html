@@ -106,7 +106,7 @@
       class="md:hidden text-gray-100 p-2 hover:bg-[#202024] rounded-lg transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-600"
       (click)="toggleMenu()"
       aria-label="Abrir menu de navegação"
-      [attr.aria-expanded]="isMenuOpen"
+      [attr.aria-expanded]="isMenuOpen()"
       aria-controls="mobile-menu"
     >
       <svg

@@ -1,4 +1,6 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, inject, input, signal, WritableSignal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { MoviesApi } from '../../services/movies-api';
 
 @Component({
   selector: 'app-movie-details',
@@ -7,6 +9,15 @@ import { Component, signal, WritableSignal } from '@angular/core';
   styleUrl: './movie-details.css',
 })
 export class MovieDetails {
+  private readonly _moviesApi = inject(MoviesApi);
+  BASE_PATH = 'http://localhost:3000';
+
+  id = input.required<string>();
+  movieDetailsResource = rxResource({
+    params: () => this.id(),
+    stream: ({ params }) => this._moviesApi.getMovieDetails(+params),
+  });
+
   reviewsCount = 5;
   // Apenas uma array de 5 elementos para o @for loop
   stars = new Array(5);

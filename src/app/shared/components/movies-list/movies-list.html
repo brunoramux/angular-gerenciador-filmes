@@ -5,6 +5,7 @@
         type="button"
         class="relative group w-full aspect-2/3 rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
         role="listitem"
+        [routerLink]="['/details', movie.id]"
       >
         <img
           [src]="BASE_PATH + movie.caminhoImagem"

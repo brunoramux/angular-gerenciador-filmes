@@ -11,6 +11,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { MoviesApi } from '../../services/movies-api';
 import { DecimalPipe } from '@angular/common';
 import { tap } from 'rxjs';
+import { FavoritesApi } from '../../../../shared/services/favorites-api';
 
 @Component({
   selector: 'app-movie-details',
@@ -20,6 +21,7 @@ import { tap } from 'rxjs';
 })
 export class MovieDetails {
   private readonly _moviesApi = inject(MoviesApi);
+  private readonly _favoritesApi = inject(FavoritesApi);
   BASE_PATH = 'http://localhost:3000';
 
   id = input.required<string>();
@@ -28,6 +30,31 @@ export class MovieDetails {
     stream: ({ params }) => this._moviesApi.getMovieDetails(+params),
   });
 
+  favoritesResource = rxResource({
+    params: () => true,
+    stream: () =>
+      this._favoritesApi.getFavorites().pipe(
+        tap((favorite) => {
+          favorite.forEach((favorite) => {
+            if (favorite.id === +this.id()) {
+              this.toggleFavorite();
+            }
+          });
+        }),
+      ),
+  });
+
+  isFavorite = signal(false);
+  toggleFavorite() {
+    this.isFavorite.update((value) => !value);
+    if (this.isFavorite()) {
+      this._favoritesApi.addMovieToFavorites(+this.id()).subscribe();
+      console.log('Oi');
+    } else {
+      this._favoritesApi.removeMovieFromFavorites(+this.id()).subscribe();
+    }
+  }
+
   movieDetails = linkedSignal(() => {
     const ERROR_ON_RESPONSE = !!this.movieDetailsResource.error();
 
@@ -35,11 +62,6 @@ export class MovieDetails {
 
     return this.movieDetailsResource.value();
   });
-
-  isFavorite = signal(false);
-  toggleFavorite() {
-    this.isFavorite.update((value) => !value);
-  }
 
   currentRating = signal<number | undefined>(undefined);
   starsStatusFilled = computed(() => {

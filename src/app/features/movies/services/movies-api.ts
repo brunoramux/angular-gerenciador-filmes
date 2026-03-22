@@ -22,4 +22,9 @@ export class MoviesApi {
       rating,
     });
   }
+
+  createMovie(movieData: FormData) {
+    // O HEADER MULTIPART FORM-DATA SERÁ INCLUÍDO AUTOMATICAMENTE PELO ANGULAR.
+    return this._httpClient.post<IMovieResponse>('http://localhost:3000/movies', movieData);
+  }
 }

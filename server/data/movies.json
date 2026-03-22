@@ -18,5 +18,25 @@
     "caminhoImagem": "/uploads/image-1765666870177-14156342.jpg",
     "qtdVotos": 282,
     "mediaVotos": 4.5508
+  },
+  {
+    "id": 1774137866551,
+    "titulo": "Breaking Bad",
+    "descricao": "Otima serie",
+    "genero": "Drama",
+    "anoLancamento": 2012,
+    "caminhoImagem": "/uploads/image-1774137866548-595406919.png",
+    "qtdVotos": 0,
+    "mediaVotos": 0
+  },
+  {
+    "id": 1774137893995,
+    "titulo": "Breaking Bad",
+    "descricao": "Otima serie",
+    "genero": "Drama",
+    "anoLancamento": 2012,
+    "caminhoImagem": "/uploads/image-1774137893989-842772972.png",
+    "qtdVotos": 13,
+    "mediaVotos": 4.2309
   }
 ]
